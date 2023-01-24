@@ -488,6 +488,7 @@ app.layout = dbc.Container(fluid=True, children=[
 # if __name__ == '__main__':
 #     debug = True if config.ENV == "DEV" else False
 #     app.run_server(debug=debug,host=config.host,port=config.port,threaded=True)
+server = app.server
 
 if __name__ == '__main__':
     app.run_server(debug=False)
