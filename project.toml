@@ -1,0 +1,4 @@
+[build]
+    [[build.env]]
+        name = 'BP_CYTHON_VERSION'
+        value = '3.9.*'
