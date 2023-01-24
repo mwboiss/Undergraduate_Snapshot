@@ -1,7 +1,7 @@
 import os
 
-ENV = "DEV"
-#ENV = "PROD"
+#ENV = "DEV"
+ENV = "PROD"
 
 # Server
 host = "0.0.0.0"

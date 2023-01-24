@@ -490,4 +490,4 @@ app.layout = dbc.Container(fluid=True, children=[
 #     app.run_server(debug=debug,host=config.host,port=config.port,threaded=True)
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)
