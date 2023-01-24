@@ -7,7 +7,6 @@ ENV = "PROD"
 host = "0.0.0.0"
 port = int(os.environ.get("Port", 5000))
 
-loaderio-10074e0cd86d7378092e5a71b7ce9e24
 
 # Info
 app_name = "Undergraduate Snapshot"
