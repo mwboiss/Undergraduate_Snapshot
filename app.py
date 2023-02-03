@@ -67,61 +67,150 @@ inputs = dbc.Row(id="inputs", align = "between", justify = "evenly", className='
     # Slider for credits earned
     dbc.Label("Current Credits Earned", id="applied-label", html_for="n-credits"),
     dcc.Slider(id="n-credits", min=0, max=120, step=1, value=0, tooltip = {"placement": "top"}, 
-               updatemode="drag", marks = {i: str(i) for i in range(0,121,10)}),
+               updatemode="drag", marks = 
+               # {i: str(i) for i in range(0,121,10)}
+               {0: {'label' : '0', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                70: {'label' : '70', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                80: {'label' : '80', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                90: {'label' : '90', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                100: {'label' : '100', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                110: {'label' : '110', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                120: {'label' : '120', 'style' : {'color' : '#000000', 'font-weight' : '900'}},}
+              ),
     dbc.Tooltip("How many credits do you currently have that will count toward your current degree?", 
                 id="tooltip-1", is_open=False, target='applied-label', trigger="hover"),
     
     # slider for credits per semester
     dbc.Label("Credits Per Semester",id='expected-label', html_for="n-s-credits"),
     dcc.Slider(id="n-s-credits", min=0, max=20, step=1, value=15, tooltip = {"placement": "top"}, 
-               updatemode="drag", marks = {i: str(i) for i in range(0,21,2)}),
+               updatemode="drag", marks = 
+                                       # {i: str(i) for i in range(0,21,2)}
+                                       {0: {'label' : '0', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                                       2: {'label' : '2', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                                       4: {'label' : '4', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                                       6: {'label' : '6', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                                       8: {'label' : '8', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                                       10: {'label' : '10', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                                       12: {'label' : '12', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                                       14: {'label' : '14', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                                       16: {'label' : '16', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                                       18: {'label' : '18', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                                       20: {'label' : '20', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+                                           }
+              ),
     dbc.Tooltip("How many credits do expect to take each semester?", 
                 id="tooltip-2d", is_open=False, target='expected-label', trigger="hover"),
     
     # slider for Years
     dbc.Label("Years to Graduation",id='years-label', html_for="n-years"),
     dcc.Slider(id="n-years", min=0, max=10, step=0.5, value=4, tooltip = {"placement": "top"}, 
-               updatemode="drag", marks = {i: str(i) for i in range(0,11)}),
+               updatemode="drag", marks = 
+               # {i: str(i) for i in range(0,11)} 
+               {0: {'label' : '0', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               1: {'label' : '1', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               2: {'label' : '2', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               3: {'label' : '3', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               4: {'label' : '4', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               5: {'label' : '5', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               6: {'label' : '6', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               7: {'label' : '7', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               8: {'label' : '8', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               9: {'label' : '9', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               10: {'label' : '10', 'style' : {'color' : '#000000', 'font-weight' : '900'}},}
+              ),
     dbc.Tooltip("How many years would you like to graduate in?", 
                 id="tooltip-3", is_open=False, target='years-label', trigger="hover"),
         
     # slider for study hours
     dbc.Label("Average Weekly Study Hours", id= 'study-label', html_for="n-study"),
     dcc.Slider(id="n-study", min=0, max=60, step=1, value=45, tooltip = {"placement": "top"}, 
-               updatemode="drag", marks = {i: str(i) for i in range(0,61,5)}),
-    dbc.Tooltip("How many hours do you expect to study a week? See article linked above for recommendations.", 
+               updatemode="drag", marks = 
+               # {i: str(i) for i in range(0,61,5)}
+               {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+               5: {'label' : '5', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+               10: {'label' : '10', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+               15: {'label' : '15', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+               20: {'label' : '20', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+               25: {'label' : '25', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+               30: {'label' : '30', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+               35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+               40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+               45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+               50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+               55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+               60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},}
+              ),
+    dbc.Tooltip("How many hours do you expect to study a week? The colors of the marks for this slider represent a dynamic range based on how many credits you expect to take each semester. Red represents studying less than the amount of credit hours. Orange represents 1 to 2 times the credits hours. Green represents 3 times the credit hours or above. This may vary depending on individual needs and preferences. For more information see the article linked above.", 
                 id="tooltip-5", is_open=False, target='study-label', trigger="hover"),
 
     # slider for sleep hours
     dbc.Label("Average Nightly Hours of Sleep",id='sleep-label', html_for="n-sleep"),
     dcc.Slider(id="n-sleep", min=5, max=12, step=1, value=8, tooltip = {"placement": "top"}, 
-               updatemode="drag", marks = {i: str(i) for i in range(0,13)}),
-    dbc.Tooltip("How many hours of sleep do you expect to get a night? See article linked above for recommendations.", 
+               updatemode="drag", marks = 
+               # {i: str(i) for i in range(5,13)}
+                                       {5: {'label' : '5', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                                       6: {'label' : '6', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                                       7: {'label' : '7', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                                       8: {'label' : '8', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                                       9: {'label' : '9', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                                       10: {'label' : '10', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                                       11: {'label' : '11', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                                       12: {'label' : '12', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},}
+              ),
+    dbc.Tooltip("How many hours of sleep do you expect to get a night? The colors of the marks for this slider represent a range that represents most sleep recommendations. Red and Orange represent insuffecient sleep, while Green represents a healthy sleep range. This may vary depending on the individual. See article linked above for recommendations.", 
                 id="tooltip-4", is_open=False, target='sleep-label', trigger="hover"),
     
     # slider for work hours
     dbc.Label("Average Weekly Work Hours",id='work-label', html_for="n-work"),
     dcc.Slider(id="n-work", min=0, max=40, step=1, value=20, tooltip = {"placement": "top"}, 
-               updatemode="drag", marks = {i: str(i) for i in range(0,41,5)}),
+               updatemode="drag", marks = 
+               # {i: str(i) for i in range(0,41,5)}
+               {0: {'label' : '0', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               5: {'label' : '5', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               10: {'label' : '10', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               15: {'label' : '15', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               20: {'label' : '20', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               25: {'label' : '25', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               30: {'label' : '30', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               35: {'label' : '35', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               40: {'label' : '40', 'style' : {'color' : '#000000', 'font-weight' : '900'}},}
+              ),
     dbc.Tooltip("How many hours do you expect to work a week during the semester?", 
                 id="tooltip-6", is_open=False, target='work-label', trigger="hover"),
     
     # slider for free hours with button to add sliders
     dbc.Row([
     dbc.Col(dbc.Label("Average Weekly Hours of Free time",id='free-label', html_for="n-free"),width=7),
-    dbc.Col([dbc.Button("Add Slider", id = "slider_button", n_clicks =0, size = "sm"),
+    dbc.Col([dbc.Button("Add Task", id = "slider_button", n_clicks =0, size = "sm"),
         dbc.Tooltip("You can add up to 5 sliders that allow you to track other activites that take up your time. i.e. Travel, Exercise, etc. ", 
                     id="tooltip-7.5", is_open=False, target="slider_button", trigger="hover")
-            ], width=3)],justify = "between"),    
+            ],)],justify = "between"),    
     dcc.Slider(id="n-free", min=0, max=40, step=1, value=0, tooltip = {"placement": "top"}, 
-               updatemode="drag", marks = {i: str(i) for i in range(0,41,5)}),
+               updatemode="drag", marks = 
+               # {i: str(i) for i in range(0,41,5)}
+               {0: {'label' : '0', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               5: {'label' : '5', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               10: {'label' : '10', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               15: {'label' : '15', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               20: {'label' : '20', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               25: {'label' : '25', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               30: {'label' : '30', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               35: {'label' : '35', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
+               40: {'label' : '40', 'style' : {'color' : '#000000', 'font-weight' : '900'}},}
+              ),
     dbc.Tooltip("How many hours a week would you like to be free to do what you want?", 
                 id="tooltip-7", is_open=False, target='free-label', trigger="hover"),    
     
     # Extra Slider 1
     html.Div(id="con-slid-1", children = [
+            dbc.Row(html.Div('Added Tasks', style={'font-size' : '200%', 'text-align' : 'justify', 'text-decoration-line' : 'underline'}), justify='center', align = "center"),
             dbc.Row([
-                dbc.Label('Added Tasks'),
                 dbc.Col([dbc.Label(dbc.Input(id = "slider-1-input", type="text", placeholder="Average Weekly Hours"), 
                                    id=f'slider-1-label', html_for="slider-1")]),
                 dbc.Col(dbc.Button("Add Hours", id = "slider-1-max", n_clicks = 0, size = "sm")),
@@ -201,6 +290,344 @@ body = dbc.Row([
 ])
 
 ############################################## Callbacks ###################################################
+# Callback to change marks colors on study slider based on credits slider
+
+@app.callback(
+            Output('n-study', 'marks'),
+            Input('n-s-credits', 'value'))
+
+def set_colors(value):
+    if value == 0:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 1:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 2:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 3:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 4:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 5:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 6:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 7:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 8:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 9:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 10:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 11:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 12:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 13:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#E20134', 'font-weight' : '900',}},
+                10: {'label' : '10', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 14:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 15:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 16:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 17:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 18:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 19:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    elif value == 20:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#FF6E3A', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
+                }
+    else:
+        marks = {0: {'label' : '0', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                5: {'label' : '5', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                10: {'label' : '10', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                15: {'label' : '15', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                20: {'label' : '20', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                25: {'label' : '25', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                30: {'label' : '30', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                35: {'label' : '35', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                40: {'label' : '40', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                45: {'label' : '45', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                50: {'label' : '50', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                55: {'label' : '55', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                60: {'label' : '60', 'style' : {'color' : '#E20134', 'font-weight' : '900'}},
+                }
+    return marks
 
 # Callback for circular relationship between credits per semester and years to graduation
 
@@ -214,9 +641,15 @@ body = dbc.Row([
 def sync_input(n_s_credits, n_years, n_credits):
     input_id = ctx.triggered[0]["prop_id"].split(".")[0]
     if input_id == "n-s-credits":
-        n_years = round(((120 - n_credits) / n_s_credits / 2) * 2) / 2
+        if n_s_credits == 0:
+            n_years = 1_000_000
+        else:    
+            n_years = round((120 - n_credits) / n_s_credits / 2)
     else:
-        n_s_credits = round((120 - n_credits) / n_years / 2)
+        if n_years == 0:
+            n_s_credits = 1_000_000
+        else:
+            n_s_credits = round((120 - n_credits) / n_years / 2)
     return n_s_credits, n_years
 
 ############## Callback for adding sliders
@@ -352,6 +785,7 @@ def increase_max(n_clicks, s_max):
 
 @app.callback(
     Output('title', 'children'),
+    Input("slider_button", 'n_clicks'),
     Input("n-credits", "value"),
     Input("n-years", "value"),
     Input("n-s-credits", "value"),
@@ -366,25 +800,83 @@ def increase_max(n_clicks, s_max):
     Input("slider-5", "value"),
 )
 
-def title_output(n_credits, n_years, n_s_credits, n_sleep, n_study, n_work, n_free, slider_1, slider_2, slider_3, slider_4, slider_5):
+def title_output(n_clicks, n_credits, n_years, n_s_credits, n_sleep, n_study, n_work, n_free, slider_1, slider_2, slider_3, slider_4, slider_5):
     week = 168
     week_sleep = int(n_sleep) * 7
     remaining = 120 - n_credits
     extra = slider_1 + slider_2 + slider_3 + slider_4 + slider_5
     remaining_hrs = week - week_sleep - n_study - n_work - n_free - n_s_credits - extra
-        
-    if remaining_hrs < 0:
-        return f"## Weekly Hourly Projection\n\n\n\
+    
+    if n_study < n_s_credits:
+        if n_clicks == 0: 
+            if remaining_hrs < 0:
+                return f"## Weekly Hourly Projection\n\n\n\
 With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver.\n\
-If you take `{n_s_credits} credits` per semester, you could graduate in `{n_years} years`.\n\n\
+If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
+study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, and spend {n_free} hours of free time,\n\
+you would need `{abs(remaining_hrs)} additional hours` than there are in a week to fit everything in (Use the sliders to adjust down your weekly hours).\n\
+`The time you have allocated for studying is less than the amount of credits you are taking in a semester. For study tips see the linked article above.`"
+
+            else:
+                return f"## Weekly Hourly Projection\n\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver.\n\
+If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
+study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, and spend {n_free} hours of free time,\n\
+you would have {remaining_hrs} hours remaining in the rest of your week.\n\
+`The time you have allocated for studying is less than the amount of credits you are taking in a semester. For study tips see the linked article above.`"
+
+        else:       
+            if remaining_hrs < 0:
+                return f"## Weekly Hourly Projection\n\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver.\n\
+If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
+study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, spend {n_free} hours of free time,and spend {extra} hours accomplishing your added tasks,\n\
+you would need `{abs(remaining_hrs)} additional hours` than there are in a week to fit everything in (Use the sliders to adjust down your weekly hours).\n\
+`The time you have allocated for studying is less than the amount of credits you are taking in a semester. For study tips see the linked article above.`"
+
+            else:
+                return f"## Weekly Hourly Projection\n\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver.\n\
+If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
+study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, spend {n_free} hours of free time, and spend {extra} hours accomplishing your added tasks,\n\
+you would have {remaining_hrs} hours remaining in the rest of your week.\n\
+`The time you have allocated for studying is less than the amount of credits you are taking in a semester. For study tips see the linked article above.`"
+    
+    else:
+        if n_clicks == 0: 
+            if remaining_hrs < 0:
+                return f"## Weekly Hourly Projection\n\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver.\n\
+If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
+study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, and spend {n_free} hours of free time,\n\
+you would need `{abs(remaining_hrs)} additional hours` than there are in a week to fit everything in (Use the sliders to adjust down your weekly hours)."
+
+            else:
+                return f"## Weekly Hourly Projection\n\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver.\n\
+If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
+study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, and spend {n_free} hours of free time,\n\
+you would have {remaining_hrs} hours remaining in the rest of your week."
+
+        else:       
+            if remaining_hrs < 0:
+                return f"## Weekly Hourly Projection\n\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver.\n\
+If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
 study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, spend {n_free} hours of free time,and spend {extra} hours accomplishing your added tasks,\n\
 you would need `{abs(remaining_hrs)} additional hours` than there are in a week to fit everything in (Use the sliders to adjust down your weekly hours)."
 
-    else:
-        return f"## Weekly Hourly Projection\n\n\n\
+            else:
+                return f"## Weekly Hourly Projection\n\n\n\
 With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver.\n\
-If you take `{n_s_credits} credits` per semester, you could graduate in `{n_years} years`.\n\n\
+If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
 study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, spend {n_free} hours of free time, and spend {extra} hours accomplishing your added tasks,\n\
 you would have {remaining_hrs} hours remaining in the rest of your week."
@@ -454,26 +946,42 @@ def plot_graph(n_credits, n_s_credits, n_years, n_sleep, n_study, n_work, n_free
     data = data.apply(pd.Series.value_counts).T
      
     fig = px.bar(data,
-                 text_auto=True, orientation='h',
+                 text_auto=True, 
+                 orientation='h',
                  labels={"value":"Hours in a Week"},
-                 color_discrete_sequence = px.colors.qualitative.Vivid,
-                hover_name = 'variable',)
-               # hover_data = data.values[0])
-    
+                 color_discrete_map = {'Sleep':'#9F0162', # Dark Purple
+                                       'Study':'#009F81', # Green
+                                       'Remaining':'#FFC33B', # Light Orange
+                                       'Free':'#008DF9', # Dodger Blue
+                                       'Work':'#8400CD', # Violet
+                                       'Class':'#A40122', # Dark Red
+                                       'Slider_1':'#00C2F9', s1_input:'#00C2F9', # Light Blue 
+                                       'Slider_2':'#E20134', s2_input:'#E20134', # Crimson
+                                       'Slider_3':'#00BDA9', s3_input:'#00BDA9', # Cyan
+                                       'Slider_4':'#FFB2FD', s4_input:'#FFB2FD', # Plum
+                                       'Slider_5':'#00FCCF', s5_input:'#00FCCF', # Aquamarine
+                                       }, 
+                # Colors from http://mkweb.bcgsc.ca/colorblind/palettes.mhtml#12-color-palette-for-colorbliness
+                 
+                hover_name = 'variable',
+                # hover_data= ''
+                )
+    fig.update_layout(hovermode="closest")
     fig.add_vline(x=168, 
                   line_width = 3, 
                   line_color = "red", 
                   line_dash = "dash",
-                 annotation_text = "Hours In A Week",
+                 annotation_text = "168 Hours In A Week",
                  annotation_position="top")
     
     fig.update_yaxes(visible=False)
     
-    fig.update_layout(legend=dict(
-    yanchor="top",
-    y = 0.75,
-    xanchor="left",
-    x = -0.1))
+    fig.update_layout(
+        legend=dict(
+        yanchor="top",
+        y = 0.75,
+        xanchor="left",
+        x = -0.1))
     
     return fig
     
@@ -488,7 +996,10 @@ app.layout = dbc.Container(fluid=True, children=[
 # if __name__ == '__main__':
 #     debug = True if config.ENV == "DEV" else False
 #     app.run_server(debug=debug,host=config.host,port=config.port,threaded=True)
+
+
+# Required for deployment on Heroku
 server = app.server
 
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server(debug=True)
