@@ -814,8 +814,8 @@ def title_output(n_clicks, n_credits, n_years, n_s_credits, n_sleep, n_study, n_
         if n_clicks == 0: 
             if remaining_hrs < 0:
                 return f"### Graduation Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver. \
-If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree\n\
+at MSU Denver. If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
 ### Weekly Hourly Projection\n\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
 study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, and spend {n_free} hours of free time,\n\
@@ -824,8 +824,8 @@ you would need `{abs(remaining_hrs)} additional hours` than there are in a week 
 
             else:
                 return f"### Graduation Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver. \
-If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree\n\
+at MSU Denver. If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
 ### Weekly Hourly Projection\n\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
 study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, and spend {n_free} hours of free time,\n\
@@ -835,8 +835,8 @@ you would have {remaining_hrs} hours remaining in the rest of your week.\n\
         else:       
             if remaining_hrs < 0:
                 return f"### Graduation Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver. \
-If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree\n\
+at MSU Denver. If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
 ### Weekly Hourly Projection\n\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
 study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, spend {n_free} hours of free time,and spend {extra} hours accomplishing your added tasks,\n\
@@ -845,8 +845,8 @@ you would need `{abs(remaining_hrs)} additional hours` than there are in a week 
 
             else:
                 return f"### Graduation Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver. \
-If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree\n\
+at MSU Denver. If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
 ### Weekly Hourly Projection\n\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
 study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, spend {n_free} hours of free time, and spend {extra} hours accomplishing your added tasks,\n\
@@ -857,8 +857,8 @@ you would have {remaining_hrs} hours remaining in the rest of your week.\n\
         if n_clicks == 0: 
             if remaining_hrs < 0:
                 return f"### Graduation Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver.\n\
-If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree\n\
+at MSU Denver. If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
 ### Weekly Hourly Projection\n\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
 study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, and spend {n_free} hours of free time,\n\
@@ -866,8 +866,8 @@ you would need `{abs(remaining_hrs)} additional hours` than there are in a week 
 
             else:
                 return f"### Graduation Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver. \
-If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree\n\
+at MSU Denver. If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
 ### Weekly Hourly Projection\n\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
 study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, and spend {n_free} hours of free time,\n\
@@ -876,8 +876,8 @@ you would have {remaining_hrs} hours remaining in the rest of your week."
         else:       
             if remaining_hrs < 0:
                 return f"### Graduation Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver. \
-If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree\n\
+at MSU Denver. If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
 ### Weekly Hourly Projection\n\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
 study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, spend {n_free} hours of free time,and spend {extra} hours accomplishing your added tasks,\n\
@@ -885,8 +885,8 @@ you would need `{abs(remaining_hrs)} additional hours` than there are in a week 
 
             else:
                 return f"### Graduation Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver. \
-If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree\n\
+at MSU Denver. If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
 ### Weekly Hourly Projection\n\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
 study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, spend {n_free} hours of free time, and spend {extra} hours accomplishing your added tasks,\n\
