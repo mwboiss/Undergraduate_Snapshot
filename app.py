@@ -103,7 +103,7 @@ inputs = dbc.Row(id="inputs", align = "between", justify = "evenly", children = 
                                        14: {'label' : '14', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
                                        16: {'label' : '16', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
                                        18: {'label' : '18', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
-                                       20: {'label' : '20', 'style' : {'color' : '#000000', 'font-weight' : '900'}}}),
+                                       20: {'label' : '20+', 'style' : {'color' : '#000000', 'font-weight' : '900'}}}),
     dbc.Tooltip("How many credits do expect to take each semester?", 
                 id="tooltip-2d", is_open=False, target='expected-label', trigger="hover"),
     
@@ -122,7 +122,7 @@ inputs = dbc.Row(id="inputs", align = "between", justify = "evenly", children = 
                7: {'label' : '7', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
                8: {'label' : '8', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
                9: {'label' : '9', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
-               10: {'label' : '10', 'style' : {'color' : '#000000', 'font-weight' : '900'}}}),
+               10: {'label' : '10+', 'style' : {'color' : '#000000', 'font-weight' : '900'}}}),
     dbc.Tooltip("How many years would you like to graduate in?", 
                 id="tooltip-3", is_open=False, target='years-label', trigger="hover"),
         
