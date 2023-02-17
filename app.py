@@ -29,20 +29,21 @@ This includes links to supporting documentation
 
 ############################### Output##############################################
 
-navbar = dbc.Nav(className="nav nav-pills",children=[
+navbar = dbc.Nav(children=[
     
     # Logo/home 
     ##### Logo may not work when files are moved as the source path is specific to current location
     dbc.NavItem(html.Img(src=config.image, height="75px")),
     
     # About
-    dbc.NavItem(html.Div([
-                        dbc.Button("About", id="toggle", color="success", n_clicks=0, size="md"),
-                        dbc.Popover(id="about", trigger="hover", target="toggle", 
-                                    children=[
-                                            dbc.PopoverHeader("How it works"), 
-                                            dbc.PopoverBody(config.about)
-                                            ])])),
+    dbc.NavItem(        
+        html.Div([
+                dbc.Button("About", id="toggle", color="success", n_clicks=0, size="md"),
+                dbc.Popover(id="about", trigger="hover", target="toggle", 
+                            children=[
+                                    dbc.PopoverHeader("How it works"), 
+                                    dbc.PopoverBody(config.about)
+                                      ])])),
 
     #links
     dbc.DropdownMenu(label="Links", size="md", color="primary", children= [
@@ -55,14 +56,16 @@ navbar = dbc.Nav(className="nav nav-pills",children=[
         dbc.DropdownMenuItem(
             [html.I(className="ol-Study"), "  Study Recommendations"], href=config.study, target="_blank"), 
         dbc.DropdownMenuItem(
-            [html.I(className="ol-Stress"), "  Stress Tips"], href=config.stress, target="_blank"), 
+            [html.I(className="ol-Stress"), "  Stress Tips"], href=config.stress, target="_blank"),
+        dbc.DropdownMenuItem(
+            [html.I(className="ol-Survey"), "  Feedback Survey"], href=config.survey, target="_blank"),
     ])])
 
 
 ######################################### Body #####################################################
 
 ################################# Input #############################################
-inputs = dbc.Row(id="inputs", align = "between", justify = "evenly", className='nav-pills', children = [
+inputs = dbc.Row(id="inputs", align = "between", justify = "evenly", children = [
     
     # Slider for credits earned
     dbc.Label("Current Credits Earned", id="applied-label", html_for="n-credits"),
@@ -81,8 +84,7 @@ inputs = dbc.Row(id="inputs", align = "between", justify = "evenly", className='
                 90: {'label' : '90', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
                 100: {'label' : '100', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
                 110: {'label' : '110', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
-                120: {'label' : '120', 'style' : {'color' : '#000000', 'font-weight' : '900'}},}
-              ),
+                120: {'label' : '120', 'style' : {'color' : '#000000', 'font-weight' : '900'}}}),
     dbc.Tooltip("How many credits do you currently have that will count toward your current degree?", 
                 id="tooltip-1", is_open=False, target='applied-label', trigger="hover"),
     
@@ -101,9 +103,7 @@ inputs = dbc.Row(id="inputs", align = "between", justify = "evenly", className='
                                        14: {'label' : '14', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
                                        16: {'label' : '16', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
                                        18: {'label' : '18', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
-                                       20: {'label' : '20', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
-                                           }
-              ),
+                                       20: {'label' : '20', 'style' : {'color' : '#000000', 'font-weight' : '900'}}}),
     dbc.Tooltip("How many credits do expect to take each semester?", 
                 id="tooltip-2d", is_open=False, target='expected-label', trigger="hover"),
     
@@ -122,8 +122,7 @@ inputs = dbc.Row(id="inputs", align = "between", justify = "evenly", className='
                7: {'label' : '7', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
                8: {'label' : '8', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
                9: {'label' : '9', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
-               10: {'label' : '10', 'style' : {'color' : '#000000', 'font-weight' : '900'}},}
-              ),
+               10: {'label' : '10', 'style' : {'color' : '#000000', 'font-weight' : '900'}}}),
     dbc.Tooltip("How many years would you like to graduate in?", 
                 id="tooltip-3", is_open=False, target='years-label', trigger="hover"),
         
@@ -144,8 +143,7 @@ inputs = dbc.Row(id="inputs", align = "between", justify = "evenly", className='
                45: {'label' : '45', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
                50: {'label' : '50', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
                55: {'label' : '55', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
-               60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},}
-              ),
+               60: {'label' : '60', 'style' : {'color' : '#009F81', 'font-weight' : '900'}}}),
     dbc.Tooltip("How many hours do you expect to study a week? The colors of the marks for this slider represent a dynamic range based on how many credits you expect to take each semester. Red represents studying less than the amount of credit hours. Orange represents 1 to 2 times the credits hours. Green represents 3 times the credit hours or above. This may vary depending on individual needs and preferences. For more information see the article linked above.", 
                 id="tooltip-5", is_open=False, target='study-label', trigger="hover"),
 
@@ -161,8 +159,7 @@ inputs = dbc.Row(id="inputs", align = "between", justify = "evenly", className='
                                        9: {'label' : '9', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
                                        10: {'label' : '10', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
                                        11: {'label' : '11', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
-                                       12: {'label' : '12', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},}
-              ),
+                                       12: {'label' : '12', 'style' : {'color' : '#009F81', 'font-weight' : '900'}}}),
     dbc.Tooltip("How many hours of sleep do you expect to get a night? The colors of the marks for this slider represent a range that represents most sleep recommendations. Red and Orange represent insuffecient sleep, while Green represents a healthy sleep range. This may vary depending on the individual. See article linked above for recommendations.", 
                 id="tooltip-4", is_open=False, target='sleep-label', trigger="hover"),
     
@@ -179,18 +176,12 @@ inputs = dbc.Row(id="inputs", align = "between", justify = "evenly", className='
                25: {'label' : '25', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
                30: {'label' : '30', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
                35: {'label' : '35', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
-               40: {'label' : '40', 'style' : {'color' : '#000000', 'font-weight' : '900'}},}
-              ),
+               40: {'label' : '40', 'style' : {'color' : '#000000', 'font-weight' : '900'}}}),
     dbc.Tooltip("How many hours do you expect to work a week during the semester?", 
                 id="tooltip-6", is_open=False, target='work-label', trigger="hover"),
     
     # slider for free hours with button to add sliders
-    dbc.Row([
-    dbc.Col(dbc.Label("Average Weekly Hours of Free time",id='free-label', html_for="n-free"),width=7),
-    dbc.Col([dbc.Button("Add Task", id = "slider_button", n_clicks =0, size = "sm"),
-        dbc.Tooltip("You can add up to 5 sliders that allow you to track other activites that take up your time. i.e. Travel, Exercise, etc. ", 
-                    id="tooltip-7.5", is_open=False, target="slider_button", trigger="hover")
-            ],)],justify = "between"),    
+    dbc.Label("Average Weekly Hours of Free Time",id='free-label', html_for="n-free"),    
     dcc.Slider(id="n-free", min=0, max=40, step=1, value=0, tooltip = {"placement": "top"}, 
                updatemode="drag", marks = 
                # {i: str(i) for i in range(0,41,5)}
@@ -202,36 +193,48 @@ inputs = dbc.Row(id="inputs", align = "between", justify = "evenly", className='
                25: {'label' : '25', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
                30: {'label' : '30', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
                35: {'label' : '35', 'style' : {'color' : '#000000', 'font-weight' : '900'}},
-               40: {'label' : '40', 'style' : {'color' : '#000000', 'font-weight' : '900'}},}
-              ),
+               40: {'label' : '40', 'style' : {'color' : '#000000', 'font-weight' : '900'}}}),
     dbc.Tooltip("How many hours a week would you like to be free to do what you want?", 
-                id="tooltip-7", is_open=False, target='free-label', trigger="hover"),    
+                id="tooltip-7", is_open=False, target='free-label', trigger="hover"),
+    
+    dbc.Row([
+    dbc.Col([
+        html.Div('Added Tasks', id = 'task_title', hidden=True, style={'font-size' : '200%', 'text-align' : 'justify', 'text-decoration-line' : 'underline'})],width = 7),
+    dbc.Col([
+        dbc.Button("Add Task", id = "slider_button", n_clicks =0, size = "sm"),
+        dbc.Tooltip("You can add up to 5 sliders that allow you to track other activites that take up your time. i.e. Travel, Exercise, etc. ", 
+                    id="tooltip-7.5", is_open=False, target="slider_button", trigger="hover")
+            ],width=5)],justify = "between"),
     
     # Extra Slider 1
-    html.Div(id="con-slid-1", children = [
-            dbc.Row(html.Div('Added Tasks', style={'font-size' : '200%', 'text-align' : 'justify', 'text-decoration-line' : 'underline'}), justify='center', align = "center"),
+    html.Div([
+    dbc.FormFloating(id="con-slid-1", children = [
             dbc.Row([
-                dbc.Col([dbc.Label(dbc.Input(id = "slider-1-input", type="text", placeholder="Average Weekly Hours"), 
+                dbc.Col([
+                    dbc.Label(dbc.Input(id = "slider-1-input", type="text", placeholder="Task Name"), 
                                    id=f'slider-1-label', html_for="slider-1")]),
-                dbc.Col(dbc.Button("Add Hours", id = "slider-1-max", n_clicks = 0, size = "sm")),
-                dcc.Slider(id="slider-1", min=0, max = 10, step=1, value=0, tooltip = {"placement": "top"}, 
+                dbc.Col(
+                    dbc.Button("Add Hours", id = "slider-1-max", n_clicks = 0, size = "sm")),
+                    dcc.Slider(id="slider-1", min=0, max = 10, step=1, value=0, tooltip = {"placement": "top"}, 
                            updatemode="drag", marks = {i: str(i) for i in range(0,11)}),
                     ])], style = {"display": "none", 'border': '1px solid black'}),
     
     # Extra Slider 2
     dbc.FormFloating(id='con-slid-2', children =[
             dbc.Row([
-                dbc.Col([dbc.Label(dbc.Input(id = "slider-2-input", type="text", placeholder="Average Weekly Hours"), 
+                dbc.Col([
+                    dbc.Label(dbc.Input(id = "slider-2-input", type="text", placeholder="Task Name"), 
                                    id=f'slider-2-label', html_for="slider-2")]),
-                dbc.Col(dbc.Button("Add Hours", id = "slider-2-max", n_clicks = 0, size = "sm")),
-                dcc.Slider(id="slider-2", min=0, max = 10, step=1, value=0, tooltip = {"placement": "top"}, 
+                dbc.Col(
+                    dbc.Button("Add Hours", id = "slider-2-max", n_clicks = 0, size = "sm")),
+                    dcc.Slider(id="slider-2", min=0, max = 10, step=1, value=0, tooltip = {"placement": "top"}, 
                            updatemode="drag", marks = {i: str(i) for i in range(0,11)}),
                     ])], style= {'display': 'none', 'border': '1px solid black'}),
 
     # Extra Slider 3
     dbc.FormFloating(id='con-slid-3', children =[
             dbc.Row([
-                dbc.Col([dbc.Label(dbc.Input(id = "slider-3-input", type="text", placeholder="Average Weekly Hours"), 
+                dbc.Col([dbc.Label(dbc.Input(id = "slider-3-input", type="text", placeholder="Task Name"), 
                                    id=f'slider-3-label', html_for="slider-3")]),
                 dbc.Col(dbc.Button("Add Hours", id = "slider-3-max", n_clicks = 0, size = "sm")),
                 dcc.Slider(id="slider-3", min=0, max = 10, step=1, value=0, tooltip = {"placement": "top"}, 
@@ -241,7 +244,7 @@ inputs = dbc.Row(id="inputs", align = "between", justify = "evenly", className='
      # Extra Slider 4
     dbc.FormFloating(id='con-slid-4', children =[
             dbc.Row([
-                dbc.Col([dbc.Label(dbc.Input(id = "slider-4-input", type="text", placeholder="Average Weekly Hours"), 
+                dbc.Col([dbc.Label(dbc.Input(id = "slider-4-input", type="text", placeholder="Task Name"), 
                                    id=f'slider-4-label', html_for="slider-4")]),
                 dbc.Col(dbc.Button("Add Hours", id = "slider-4-max", n_clicks = 0, size = "sm")),
                 dcc.Slider(id="slider-4", min=0, max = 10, step=1, value=0, tooltip = {"placement": "top"}, 
@@ -251,15 +254,14 @@ inputs = dbc.Row(id="inputs", align = "between", justify = "evenly", className='
      # Extra Slider 5
     dbc.FormFloating(id='con-slid-5', children =[
             dbc.Row([
-                dbc.Col([dbc.Label(dbc.Input(id = "slider-5-input", type="text", placeholder="Average Weekly Hours"), 
+                dbc.Col([dbc.Label(dbc.Input(id = "slider-5-input", type="text", placeholder="Task Name"), 
                                    id=f'slider-5-label', html_for="slider-5")]),
                 dbc.Col(dbc.Button("Add Hours", id = "slider-5-max", n_clicks = 0, size = "sm")),
                 dcc.Slider(id="slider-5", min=0, max = 10, step=1, value=0, tooltip = {"placement": "top"}, 
                            updatemode="drag", marks = {i: str(i) for i in range(0,11)}),
-                    ])], style= {'display': 'none', 'border': '1px solid black'})
+                    ])], style= {'display': 'none', 'border': '1px solid black'}),
 
-])
-
+])])
 ############################################### Output ######################################################
 body = dbc.Row([
     
@@ -658,13 +660,14 @@ def sync_input(n_s_credits, n_years, n_credits):
 
 @app.callback(
         Output("con-slid-1", "style"),
+        Output("task_title", "hidden"),
         Input("slider_button", "n_clicks"))
 
 def add_slider_1(val):
     if val >= 1:
-        return {"display" : "block"}
+        return {"display" : "block"}, False
     else:
-        return {"display" : "none"}
+        return {"display" : "none"}, True
 
 # Extra slider 2
 
@@ -724,7 +727,7 @@ def add_slider_5(clicks):
         Input('slider-1', 'max'))
 
 def increase_max(n_clicks, s_max):
-    if n_clicks ==0:
+    if n_clicks == 0:
         return s_max, {i: str(i) for i in range(0,11)}
     else:
         return s_max + 1, {i: str(i) for i in range(0, s_max + 2)}
@@ -810,18 +813,20 @@ def title_output(n_clicks, n_credits, n_years, n_s_credits, n_sleep, n_study, n_
     if n_study < n_s_credits:
         if n_clicks == 0: 
             if remaining_hrs < 0:
-                return f"## Weekly Hourly Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver.\n\
+                return f"### Graduation Projection\n\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver. \
 If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+### Weekly Hourly Projection\n\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
 study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, and spend {n_free} hours of free time,\n\
 you would need `{abs(remaining_hrs)} additional hours` than there are in a week to fit everything in (Use the sliders to adjust down your weekly hours).\n\
 `The time you have allocated for studying is less than the amount of credits you are taking in a semester. For study tips see the linked article above.`"
 
             else:
-                return f"## Weekly Hourly Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver.\n\
+                return f"### Graduation Projection\n\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver. \
 If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+### Weekly Hourly Projection\n\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
 study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, and spend {n_free} hours of free time,\n\
 you would have {remaining_hrs} hours remaining in the rest of your week.\n\
@@ -829,18 +834,20 @@ you would have {remaining_hrs} hours remaining in the rest of your week.\n\
 
         else:       
             if remaining_hrs < 0:
-                return f"## Weekly Hourly Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver.\n\
+                return f"### Graduation Projection\n\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver. \
 If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+### Weekly Hourly Projection\n\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
 study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, spend {n_free} hours of free time,and spend {extra} hours accomplishing your added tasks,\n\
 you would need `{abs(remaining_hrs)} additional hours` than there are in a week to fit everything in (Use the sliders to adjust down your weekly hours).\n\
 `The time you have allocated for studying is less than the amount of credits you are taking in a semester. For study tips see the linked article above.`"
 
             else:
-                return f"## Weekly Hourly Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver.\n\
+                return f"### Graduation Projection\n\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver. \
 If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+### Weekly Hourly Projection\n\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
 study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, spend {n_free} hours of free time, and spend {extra} hours accomplishing your added tasks,\n\
 you would have {remaining_hrs} hours remaining in the rest of your week.\n\
@@ -849,34 +856,38 @@ you would have {remaining_hrs} hours remaining in the rest of your week.\n\
     else:
         if n_clicks == 0: 
             if remaining_hrs < 0:
-                return f"## Weekly Hourly Projection\n\n\n\
+                return f"### Graduation Projection\n\n\n\
 With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver.\n\
 If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+### Weekly Hourly Projection\n\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
 study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, and spend {n_free} hours of free time,\n\
 you would need `{abs(remaining_hrs)} additional hours` than there are in a week to fit everything in (Use the sliders to adjust down your weekly hours)."
 
             else:
-                return f"## Weekly Hourly Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver.\n\
+                return f"### Graduation Projection\n\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver. \
 If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+### Weekly Hourly Projection\n\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
 study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, and spend {n_free} hours of free time,\n\
 you would have {remaining_hrs} hours remaining in the rest of your week."
 
         else:       
             if remaining_hrs < 0:
-                return f"## Weekly Hourly Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver.\n\
+                return f"### Graduation Projection\n\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver. \
 If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+### Weekly Hourly Projection\n\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
 study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, spend {n_free} hours of free time,and spend {extra} hours accomplishing your added tasks,\n\
 you would need `{abs(remaining_hrs)} additional hours` than there are in a week to fit everything in (Use the sliders to adjust down your weekly hours)."
 
             else:
-                return f"## Weekly Hourly Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver.\n\
+                return f"### Graduation Projection\n\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree at MSU Denver. \
 If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
+### Weekly Hourly Projection\n\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
 study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, spend {n_free} hours of free time, and spend {extra} hours accomplishing your added tasks,\n\
 you would have {remaining_hrs} hours remaining in the rest of your week."
@@ -988,15 +999,10 @@ def plot_graph(n_credits, n_s_credits, n_years, n_sleep, n_study, n_work, n_free
 ############################## App Layout####################################
 
 app.layout = dbc.Container(fluid=True, children=[
-        html.H1(config.app_name, id="nav-pills"),
+        html.H1(config.app_name),
         navbar,
         html.Br(),
         body])
-
-# if __name__ == '__main__':
-#     debug = True if config.ENV == "DEV" else False
-#     app.run_server(debug=debug,host=config.host,port=config.port,threaded=True)
-
 
 # Required for deployment on Heroku
 server = app.server
