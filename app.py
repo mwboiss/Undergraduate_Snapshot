@@ -57,11 +57,17 @@ navbar = dbc.Nav(children=[
             [html.I(className="ol-Study"), "  Study Recommendations"], href=config.study, target="_blank"), 
         dbc.DropdownMenuItem(
             [html.I(className="ol-Stress"), "  Stress Tips"], href=config.stress, target="_blank"),
-        dbc.DropdownMenuItem(
-            [html.I(className="ol-Survey"), "  Feedback Survey"], href=config.survey, target="_blank"),
-    ])])
+    ]),
 
+    # Space between buttons
+    dbc.NavItem(html.Div(style={'width': '5px'})),
 
+    # Survey
+    dbc.NavItem(        
+        html.Div([
+                dcc.Link(dbc.Button('Survey', color='success', size='md'), href=config.survey, target='_blank')
+        ]))])
+    
 ######################################### Body #####################################################
 
 ################################# Input #############################################
@@ -160,7 +166,7 @@ inputs = dbc.Row(id="inputs", align = "between", justify = "evenly", children = 
                                        10: {'label' : '10', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
                                        11: {'label' : '11', 'style' : {'color' : '#009F81', 'font-weight' : '900'}},
                                        12: {'label' : '12', 'style' : {'color' : '#009F81', 'font-weight' : '900'}}}),
-    dbc.Tooltip("How many hours of sleep do you expect to get a night? The colors of the marks for this slider represent a range that represents most sleep recommendations. Red and Orange represent insuffecient sleep, while Green represents a healthy sleep range. This may vary depending on the individual. See article linked above for recommendations.", 
+    dbc.Tooltip("How many hours of sleep do you expect to get a night? The colors of the marks for this slider represent a range that represents most sleep recommendations. Red and orange represent insuffecient sleep, while green represents a healthy sleep range. This may vary depending on the individual. See article linked above for recommendations.", 
                 id="tooltip-4", is_open=False, target='sleep-label', trigger="hover"),
     
     # slider for work hours
@@ -292,8 +298,8 @@ body = dbc.Row([
 ])
 
 ############################################## Callbacks ###################################################
-# Callback to change marks colors on study slider based on credits slider
 
+# Callback to change marks colors on study slider based on credits slider
 @app.callback(
             Output('n-study', 'marks'),
             Input('n-s-credits', 'value'))
@@ -809,88 +815,39 @@ def title_output(n_clicks, n_credits, n_years, n_s_credits, n_sleep, n_study, n_
     remaining = 120 - n_credits
     extra = slider_1 + slider_2 + slider_3 + slider_4 + slider_5
     remaining_hrs = week - week_sleep - n_study - n_work - n_free - n_s_credits - extra
+
+    # Notifications
     
-    if n_study < n_s_credits:
-        if n_clicks == 0: 
-            if remaining_hrs < 0:
-                return f"### Graduation Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree\n\
-at MSU Denver. If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
-### Weekly Hourly Projection\n\n\n\
-With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
-study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, and spend {n_free} hours of free time,\n\
-you would need `{abs(remaining_hrs)} additional hours` than there are in a week to fit everything in (Use the sliders to adjust down your weekly hours).\n\
-`The time you have allocated for studying is less than the amount of credits you are taking in a semester. For study tips see the linked article above.`"
-
-            else:
-                return f"### Graduation Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree\n\
-at MSU Denver. If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
-### Weekly Hourly Projection\n\n\n\
-With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
-study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, and spend {n_free} hours of free time,\n\
-you would have {remaining_hrs} hours remaining in the rest of your week.\n\
-`The time you have allocated for studying is less than the amount of credits you are taking in a semester. For study tips see the linked article above.`"
-
-        else:       
-            if remaining_hrs < 0:
-                return f"### Graduation Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree\n\
-at MSU Denver. If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
-### Weekly Hourly Projection\n\n\n\
-With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
-study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, spend {n_free} hours of free time,and spend {extra} hours accomplishing your added tasks,\n\
-you would need `{abs(remaining_hrs)} additional hours` than there are in a week to fit everything in (Use the sliders to adjust down your weekly hours).\n\
-`The time you have allocated for studying is less than the amount of credits you are taking in a semester. For study tips see the linked article above.`"
-
-            else:
-                return f"### Graduation Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree\n\
-at MSU Denver. If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
-### Weekly Hourly Projection\n\n\n\
-With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
-study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, spend {n_free} hours of free time, and spend {extra} hours accomplishing your added tasks,\n\
-you would have {remaining_hrs} hours remaining in the rest of your week.\n\
-`The time you have allocated for studying is less than the amount of credits you are taking in a semester. For study tips see the linked article above.`"
+    # Financial Aid
+    fa_notification = "\n\n`Note: With less than 6 credits per semester, you may not be eligible for financial aid. Please reach out to your advisor for guidance`" if n_s_credits < 6 else ""
     
+    # Veteran or International Students
+    vi_notification = "\n\n`Note: If you are using Veterans Benefits or if you are an International student, taking less than 12 credits per semester may affect your funding. Please reach out to your advisor for guidance.`" if n_s_credits < 12 else ""
+    
+    # Health Insurance
+    hi_notification = "\n\n`Note: If you take 9 or more credit hours in a semester you are automatically enrolled in MSU Denvers Student Health Insurance Plan. You can opt out of the program if you already have health insurance. More information can be found in the Student Hub under Health/Wellness.`" if n_s_credits >= 9 else ""
+
+    # Study hours less than credit hours
+    study_notification = "\n\n`Note: The time you have allocated for studying is less than the amount of credits you are taking in a semester. For study tips see the linked article above.`" if n_study < n_s_credits else ""
+
+    # Graduation Projection
+    grad_proj = f"### Graduation Projection\n\n\n\
+With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree\n\
+at MSU Denver. If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_."
+
+    # Weekly Hourly Projection
+    if remaining_hrs < 0:
+        weekly_proj = f"\n\n### Weekly Hourly Projection\n\n\n\
+With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
+study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, spend {n_free} hours of free time,{' and spend ' + str(extra) + ' hours accomplishing your added tasks' if n_clicks > 0 else ''}\n\
+you would need `{abs(remaining_hrs)} additional hours` than there are in a week to fit everything in (Use the sliders to adjust down your weekly hours)."
     else:
-        if n_clicks == 0: 
-            if remaining_hrs < 0:
-                return f"### Graduation Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree\n\
-at MSU Denver. If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
-### Weekly Hourly Projection\n\n\n\
+        weekly_proj = f"\n\n### Weekly Hourly Projection\n\n\n\
 With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
-study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, and spend {n_free} hours of free time,\n\
-you would need `{abs(remaining_hrs)} additional hours` than there are in a week to fit everything in (Use the sliders to adjust down your weekly hours)."
-
-            else:
-                return f"### Graduation Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree\n\
-at MSU Denver. If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
-### Weekly Hourly Projection\n\n\n\
-With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
-study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, and spend {n_free} hours of free time,\n\
+study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, spend {n_free} hours of free time,{' and spend ' + str(extra) + ' hours accomplishing your added tasks' if n_clicks > 0 else ''}\n\
 you would have {remaining_hrs} hours remaining in the rest of your week."
 
-        else:       
-            if remaining_hrs < 0:
-                return f"### Graduation Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree\n\
-at MSU Denver. If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
-### Weekly Hourly Projection\n\n\n\
-With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
-study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, spend {n_free} hours of free time,and spend {extra} hours accomplishing your added tasks,\n\
-you would need `{abs(remaining_hrs)} additional hours` than there are in a week to fit everything in (Use the sliders to adjust down your weekly hours)."
-
-            else:
-                return f"### Graduation Projection\n\n\n\
-With {n_credits} college credits currently earned, you need {remaining} additional credits to finish your bachelor's degree\n\
-at MSU Denver. If you take _`{n_s_credits} credits`_ per semester, you could graduate in _`{n_years} years`_.\n\n\
-### Weekly Hourly Projection\n\n\n\
-With a total of 168 hours in a week and your current predicted course load, if you were to:\n\
-study {n_study} hours, sleep {week_sleep} hours, work {n_work} hours, spend {n_free} hours of free time, and spend {extra} hours accomplishing your added tasks,\n\
-you would have {remaining_hrs} hours remaining in the rest of your week."
+    return grad_proj + weekly_proj + study_notification+ fa_notification + vi_notification + hi_notification
 
 ################################ Call back for plot
 
