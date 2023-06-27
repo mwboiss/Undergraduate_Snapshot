@@ -32,7 +32,6 @@ This includes links to supporting documentation
 navbar = dbc.Nav(children=[
     
     # Logo/home 
-    ##### Logo may not work when files are moved as the source path is specific to current location
     dbc.NavItem(html.Img(src=config.image, height="75px")),
     
     # About
@@ -65,8 +64,13 @@ navbar = dbc.Nav(children=[
     # Survey
     dbc.NavItem(        
         html.Div([
-                dcc.Link(dbc.Button('Survey', color='success', size='md'), href=config.survey, target='_blank')
-        ]))])
+                dcc.Link(dbc.Button('Survey', id='Survey-id', color='success', size='md'), href=config.survey, target='_blank'),
+                dbc.Popover(id='survey', trigger='hover',target= 'Survey-id',
+                           children=[
+                               dbc.PopoverHeader("Help us improve."),
+                               dbc.PopoverBody(config.Survey)
+                                                 ])]))])
+                                                       
     
 ######################################### Body #####################################################
 
@@ -819,7 +823,7 @@ def title_output(n_clicks, n_credits, n_years, n_s_credits, n_sleep, n_study, n_
     # Notifications
     
     # Financial Aid
-    fa_notification = "\n\n`Note: With less than 6 credits per semester, you may not be eligible for financial aid. Please reach out to your advisor for guidance`" if n_s_credits < 6 else ""
+    fa_notification = "\n\n`Note: With less than 6 credits per semester, you may not be eligible for financial aid. Please reach out to your advisor for guidance.`" if n_s_credits < 6 else ""
     
     # Veteran or International Students
     vi_notification = "\n\n`Note: If you are using Veterans Benefits or if you are an International student, taking less than 12 credits per semester may affect your funding. Please reach out to your advisor for guidance.`" if n_s_credits < 12 else ""

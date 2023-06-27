@@ -14,6 +14,9 @@ fontawesome = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fou
 dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
 
 about = "Move the sliders to a relevant value and you will get a snapshot of what your week may look like on your journey at MSU. Feel free to hover over the titles for more information."
+
+Survey = "Make a difference in shaping your student experience! Click here to take a short survey and provide valuable feedback that will help us enhance our application, ensuring it better aligns with your needs and supports your journey towards graduation."
+
 disclaimer = "The purpose of this Dashboard is to provide students with insights into how their time at MSU Denver may be allocated.\
 It gives the student a snapshot of the hours in a week and how they will be spent based on the student input.\n\n\
 *Note: This Dashboard utilizes certain assumptions that students should be aware of:\n\
